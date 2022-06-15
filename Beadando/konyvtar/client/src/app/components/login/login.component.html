@@ -1,0 +1,29 @@
+<div class="center">
+    <form [formGroup]="createForm" class="form container">
+        <mat-form-field class="form-element full-width">
+            <mat-label>Username</mat-label>
+            <input
+                matInput
+                type="text"
+                [errorStateMatcher]="matcher"
+                formControlName="username"
+            />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="form-element full-width">
+            <mat-label>Password</mat-label>
+            <input
+                matInput
+                type="password"
+                [errorStateMatcher]="matcher"
+                formControlName="password"
+            />
+        </mat-form-field>
+    </form>
+    <button
+            mat-button
+            (click)="submitForm()"
+        >
+            Confirm
+        </button>
+</div>

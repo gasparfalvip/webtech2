@@ -1,0 +1,69 @@
+<p *ngIf="Rents.length <= 0" class="no-data text-center">
+	There are no rents added yet!
+</p>
+
+
+<div class="center">
+	<mat-accordion
+		*ngFor="let rent of Rents; let i = index"
+		class="accordion-spacing"
+	>
+		<mat-expansion-panel
+			class="extension-panel-shown"
+		>
+			<mat-expansion-panel-header class="extension-panel-header-shown">
+				<mat-panel-title>
+					Until: {{ rent.expiry }}
+				</mat-panel-title>
+				<mat-panel-description>
+					Rented at: {{ rent.dateofRent }}
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<div *ngIf="rent.Rented.length > 0">Rented:</div>
+			<div *ngFor="let rented of rent.Rented">
+				- {{ rented.title }}, id: {{ rented.serNum}}
+			</div>
+			<button mat-button (click)="deleteRent(rent, i)">
+				<mat-icon>done</mat-icon>
+			</button>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>
+
+<div class="center2">
+	<mat-accordion
+		*ngFor="let rent of RentablesLate; let i = index"
+		class="accordion-spacing"
+		
+	>	
+	<p>Rent is overdue!</p>
+		<mat-expansion-panel
+			class="extension-panel-shown"
+			
+		>
+			<mat-expansion-panel-header class="extension-panel-header-shown">
+				<mat-panel-title>
+					Until: {{ rent.expiry }}
+				</mat-panel-title>
+				<mat-panel-description>
+					Rented at: {{ rent.dateofRent }}
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<div *ngIf="rent.Rented.length > 0">Rented:</div>
+			<div *ngFor="let rented of rent.Rented">
+				- {{ rented.title }}, id: {{ rented.serNum}}
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>
+
+<div class="button-container">
+	<button mat-fab color="primary" (click)="createRent()">
+		<mat-icon>add</mat-icon>
+	</button>
+</div>
+<div class="button-container2">
+	<button mat-fab color="primary" (click)="getLateRents()">
+		<mat-icon>alarm</mat-icon>
+	</button>
+</div>

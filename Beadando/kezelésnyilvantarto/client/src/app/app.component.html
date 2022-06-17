@@ -1,0 +1,21 @@
+<div class="example-container">
+	<mat-toolbar color="primary" class="example-toolbar">
+		<mat-toolbar-row class="nav-bar">
+			<h1 class="example-app-name">Kezelés nyilvántartás</h1>
+
+			<span class="example-spacer"></span>
+
+			<a mat-button routerLinkActive="active" routerLink="/patient-list">
+				<mat-icon>people</mat-icon> <span class="icon">Patients</span></a>
+			<a mat-button routerLinkActive="active" routerLink="/procedure-list">
+				<mat-icon>healing</mat-icon> <span>Procedures</span></a>
+			<a mat-button routerLinkActive="active" routerLink="/treatment-list">
+				<mat-icon>spa</mat-icon> <span>Treatment</span></a>
+		</mat-toolbar-row>
+	</mat-toolbar>
+	<mat-sidenav-container class="container">
+		<mat-sidenav-content>
+			<router-outlet></router-outlet>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+</div>

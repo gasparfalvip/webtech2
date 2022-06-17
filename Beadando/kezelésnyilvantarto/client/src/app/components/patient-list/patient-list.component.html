@@ -1,0 +1,64 @@
+<p *ngIf="Patients.length <= 0" class="no-data text-center">
+	There are no patients added yet!
+	<mat-spinner></mat-spinner>
+</p>
+
+<div class="center">
+	<mat-accordion
+		*ngFor="let patient of Patients; let i = index"
+		class="accordion-spacing"
+	>
+		<mat-expansion-panel
+			*ngIf="patient.isDeleted == false; else fadedOut"
+			class="extension-panel-shown"
+		>
+			<mat-expansion-panel-header class="extension-panel-header-shown">
+				<mat-panel-title>
+					{{ patient.name }}
+				</mat-panel-title>
+				<mat-panel-description>
+					{{ patient.address.city }} {{ patient.address.street }}
+					{{ patient.address.house }}
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<p>
+				Phone: {{ patient.phoneNum }} <br />
+				ID: {{ patient.TAJnum }}
+			</p>
+			<div *ngIf="patient.Treatments.length > 0">Procedures:</div>
+			<div *ngFor="let treatment of patient.Treatments">
+				<div *ngFor="let rented of treatment.Procedures">
+					- {{ rented.title }}
+				</div>
+			</div>
+			<button mat-button (click)="editPatient(patient)">
+				<mat-icon>edit</mat-icon>
+			</button>
+			<button mat-button (click)="togglePatient(patient)">
+				<mat-icon>delete</mat-icon>
+			</button>
+		</mat-expansion-panel>
+		<ng-template #fadedOut class="fadedOut">
+			<mat-expansion-panel disabled class="extension-panel">
+				<mat-expansion-panel-header class="extension-panel-header">
+					<mat-panel-title>
+						{{ patient.name }}
+					</mat-panel-title>
+					<mat-panel-description>
+						{{ patient.address.city }} {{ patient.address.street }}
+						{{ patient.address.house }}
+					</mat-panel-description>
+					<button mat-button (click)="togglePatient(patient)">
+						<mat-icon>add</mat-icon>
+					</button>
+				</mat-expansion-panel-header>
+			</mat-expansion-panel>
+		</ng-template>
+	</mat-accordion>
+</div>
+
+<div class="button-container">
+	<button mat-fab color="primary" (click)="createPatient()">
+		<mat-icon>add</mat-icon>
+	</button>
+</div>

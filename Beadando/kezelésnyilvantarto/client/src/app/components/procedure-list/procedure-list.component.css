@@ -1,0 +1,46 @@
+.button-container{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 999 !important;
+}
+
+.button-container2{
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+    z-index: 999 !important;
+}
+
+
+.procedure-card {
+    min-width: 280px;
+    margin: 15px;
+}
+
+.procedure-header-image {
+    background-size: cover;
+    
+    border-radius: 0;
+}
+
+.SURGERY{
+    background-image: url('https://img.icons8.com/ios/344/surgery.png');
+}
+
+.CHEMOTHERAPY{
+    background-image: url('https://https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-chemotherapy-allergy-flaticons-lineal-color-flat-icons-2.png');
+}
+
+.RADIATIONTHERAPY{
+    background-image: url('https://https://img.icons8.com/windows/344/radiation.png');
+}
+
+#picker{
+    pointer-events:none;
+    max-width: 300px;
+}
+
+.card-container{
+    padding: 35px 10%;
+}

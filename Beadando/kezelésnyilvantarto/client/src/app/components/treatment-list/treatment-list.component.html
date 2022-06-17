@@ -1,0 +1,69 @@
+<p *ngIf="Treatments.length <= 0" class="no-data text-center">
+	There are no treatments added yet!
+</p>
+
+
+<div class="center">
+	<mat-accordion
+		*ngFor="let treatment of Treatments; let i = index"
+		class="accordion-spacing"
+	>
+		<mat-expansion-panel
+			class="extension-panel-shown"
+		>
+			<mat-expansion-panel-header class="extension-panel-header-shown">
+				<mat-panel-title>
+					Started: {{ treatment.enddate }}
+				</mat-panel-title>
+				<mat-panel-description>
+					Ends: {{ treatment.startdate }}
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<div *ngIf="treatment.Procedures.length > 0">Procedures:</div>
+			<div *ngFor="let scedule of treatment.Procedures">
+				- {{ scedule.name }}, id: {{ scedule.serNum}}
+			</div>
+			<button mat-button (click)="deleteTreatment(treatment, i)">
+				<mat-icon>done</mat-icon>
+			</button>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>
+
+<div class="center2">
+	<mat-accordion
+		*ngFor="let treatment of ProceduresLate; let i = index"
+		class="accordion-spacing"
+		
+	>	
+	<p>Treatment is over!</p>
+		<mat-expansion-panel
+			class="extension-panel-shown"
+			
+		>
+			<mat-expansion-panel-header class="extension-panel-header-shown">
+				<mat-panel-title>
+					Until: {{ treatment.enddate }}
+				</mat-panel-title>
+				<mat-panel-description>
+					Procedures at: {{ treatment.startdate }}
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<div *ngIf="treatment.Procedures.length > 0">Procedures:</div>
+			<div *ngFor="let scedule of treatment.Procedures">
+				- {{ scedule.title }}, id: {{ scedule.serNum}}
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>
+
+<div class="button-container">
+	<button mat-fab color="primary" (click)="createTreatment()">
+		<mat-icon>add</mat-icon>
+	</button>
+</div>
+<div class="button-container2">
+	<button mat-fab color="primary" (click)="getLateTreatments()">
+		<mat-icon>alarm</mat-icon>
+	</button>
+</div>
